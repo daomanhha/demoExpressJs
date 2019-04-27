@@ -1,0 +1,9 @@
+H1 UserList
+form(action = "/users/search" method = "get")
+	input(name = "q" type= "text")
+	button search
+ul 
+	each user in Users
+		li
+			span= user.name
+			a(href= "/users/"+user.id) ViewDetail
