@@ -1,9 +1,20 @@
-H1 UserList
-form(action = "/users/search" method = "get")
-	input(name = "q" type= "text")
-	button search
-ul 
-	each user in Users
-		li
-			span= user.name
-			a(href= "/users/"+user.id) ViewDetail
+extends ../layouts/commonLayout.pug
+
+block navbar
+	form(action = "/users/search" method = "get")
+		div(class ="form-group d-flex")
+			input(name = "q" class="form-control mr-2" type= "text")
+			button.btn.btn-primary search
+	table.table
+		tr
+			th Name
+			th Phone
+			th age
+			th action
+		each user in Users
+			tr
+				td= user.name
+				td= user.phone
+				td= user.age
+				td 
+					a(href= "/users/"+user.id) ViewDetail

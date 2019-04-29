@@ -1,9 +1,18 @@
-H1 Create User
-form(action = "/users/create" method ="post")
-	label Name
-	input(name="name" type= "text")
-	br
-	labal Age
-	input(name="age" type= "text")
-	br
-	button Create
+extends ../layouts/commonLayout.pug
+
+block navbar
+	if Errors
+		each error in Errors
+			.alert.alert-danger= error
+	form(action = "/users/create" method ="post")
+		.form-group
+			label Name
+			input(name="name" type= "text" class="form-control" value = values ? values.name : "")
+			br
+			label Age
+			input(name="age" type= "text" class="form-control" value = values ? values.age : "")
+			br
+			label Phone
+			input(name="phone" type= "text" class="form-control" value = values ? values.phone : "")
+			br
+			button.btn.btn-primary Create
