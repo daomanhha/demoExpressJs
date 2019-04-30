@@ -1,0 +1,15 @@
+extends ../layouts/commonLayout.pug
+
+block navbar
+	if Errors
+		each error in Errors
+			.alert.alert-danger= error
+	form(action = "/auth/login" method ="post")
+		.form-group
+			label Email
+			input(name="email" type= "text" class="form-control" value = values ? values.name : "")
+			br
+			label Password
+			input(name="password" type= "text" class="form-control" value = values ? values.phone : "")
+			br
+			button.btn.btn-primary Login
