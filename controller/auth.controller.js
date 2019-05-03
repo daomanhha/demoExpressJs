@@ -12,7 +12,8 @@ module.exports.postAuth = function(req, res){
 		res.render("authentication/auth.pug",{
 			Errors:[
 				"User does not exits"
-			]
+			],
+			values: req.body
 		});
 	return;	
 	}
@@ -20,12 +21,15 @@ module.exports.postAuth = function(req, res){
 		res.render("authentication/auth.pug",{
 			Errors:[
 				"Wrong password"
-			]
+			],
+			values: req.body
 		});
 	return;	
 	}
 
-	res.cookie("userId", user.id);
+	res.cookie("userId", user.id, {
+		signed: true
+	});
 
 	res.redirect("/users");
 };

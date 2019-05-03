@@ -1,3 +1,6 @@
+//dotenv npm
+require('dotenv').config();
+
 var express = require("express");
 var app = express();
 var port = 4500;
@@ -15,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 
 //install cookie-parser
 var cookieParser = require('cookie-parser');
-app.use(cookieParser());
+app.use(cookieParser(process.env.SESSION_SECRET));
 //install pug
 app.set('views', './views');
 app.set('view engine', 'pug');
