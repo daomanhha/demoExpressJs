@@ -6,6 +6,6 @@ var db = low(adapter);
 
 
 // Set some defaults (required if your JSON file is empty)
-db.defaults({ Users: [] }).write();
+db.defaults({ Users: [],Products: [] }).write();
 
 module.exports = db;

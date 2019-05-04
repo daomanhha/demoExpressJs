@@ -7,6 +7,7 @@ var port = 4500;
 
 var userRouter = require("./routers/user.router.js");
 var authRouter = require("./routers/auth.router.js");
+var productRouter = require("./routers/products.router.js");
 var middleWare = require("./middleWare/auth.middleware.js");
 
 
@@ -29,6 +30,7 @@ app.get("/", function(req, res){
 	res.render("index.pug");//ham render se lay tham so tu thu muc view
 });
 
+app.use("/product", productRouter );
 app.use("/auth", authRouter );
 app.use("/users", middleWare.requireLogin , userRouter);//chuyền vào 2 tham số là đuôi sau root và module sẽ kiểm tra trong router tất các các 
 
