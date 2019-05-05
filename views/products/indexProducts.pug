@@ -1,14 +1,17 @@
 extends ../layouts/commonLayout.pug
 
 block navbar
-	each Image in Images
-		.card(style='width: 18rem;' class="col-md-4 col-lg-3 col-sm-6 mt-3"  )
-			img.card-img-top(src= Image.image )
-			.card-body
-				h5.card-title Card title
-				p.card-text
-					| Some quick example text to build on the card title and make up the bulk of the card&apos;s content.
-				a.btn.btn-primary(href='#') Go somewhere
+	a.d-flex(href = "#" ) Cart
+		p= "(" + countCart + ")"
+	.row
+		each Product in Products
+			.card(style='width: 18rem;' class="col-md-4 col-lg-3 col-sm-6 mt-3"  )
+				img.card-img-top(src= Product.image )
+				.card-body
+					h5.card-title Card title
+					p.card-text
+						| Some quick example text to build on the card title and make up the bulk of the card&apos;s content.
+					a.btn.btn-primary(href='/cart/add/' + Product.id) ADD TO CART
 block pagination
 	nav(aria-label='Page navigation example')
 		ul.pagination

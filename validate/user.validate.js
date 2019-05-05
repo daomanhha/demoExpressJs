@@ -9,7 +9,7 @@ module.exports.createValidate = function(req, res, next){
 	if(!req.body.phone){
 		Errors.push("required phone");
 	}
-	if(Errors.length){ //truthy and falsy
+	if(Errors.length){ //truthy and falsy trong trường hợp này sẽ nhận 1 giá trị truthy
 		res.render("users/userCreate.pug",{
 			Errors: Errors,//Nếu tồn tại obj này thì trong file pug gọi if Erros để kiểm tra
 			values: req.body

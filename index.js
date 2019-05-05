@@ -8,7 +8,10 @@ var port = 4500;
 var userRouter = require("./routers/user.router.js");
 var authRouter = require("./routers/auth.router.js");
 var productRouter = require("./routers/products.router.js");
+var cartRouter = require("./routers/cart.router.js");
+
 var middleWare = require("./middleWare/auth.middleware.js");
+var Session = require("./middleware/Session.middleware.js");
 
 
 //install body-parser
@@ -24,6 +27,13 @@ app.use(cookieParser(process.env.SESSION_SECRET));
 app.set('views', './views');
 app.set('view engine', 'pug');
 
+//static file
+app.use(express.static('public'));
+//set middleware cho tất cả đường dẫn
+app.use(Session);
+
+
+
 
 
 app.get("/", function(req, res){
@@ -33,5 +43,6 @@ app.get("/", function(req, res){
 app.use("/product", productRouter );
 app.use("/auth", authRouter );
 app.use("/users", middleWare.requireLogin , userRouter);//chuyền vào 2 tham số là đuôi sau root và module sẽ kiểm tra trong router tất các các 
+app.use("/cart", cartRouter);
 
 app.listen(port,()=>{console.log("Connecting to port: "+port)});

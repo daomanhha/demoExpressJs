@@ -7,12 +7,15 @@ block navbar
 			button.btn.btn-primary search
 	table.table
 		tr
+			th Avatar
 			th Name
 			th Phone
 			th age
 			th action
 		each user in Users
 			tr
+				td
+					img(src= user.avatar width="64")
 				td= user.name
 				td= user.phone
 				td= user.age

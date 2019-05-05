@@ -11,8 +11,9 @@ module.exports.userCreate = function(req, res){
 };
 module.exports.userPost = function(req, res){
 	req.body.id = shortid.generate();
+	req.body.avatar = req.file.path.split("\\").slice(1).join("/") ;
 	db.get("Users").push(req.body).write();
-	res.redirect("/");
+	res.redirect("/users");
 };
 module.exports.userDetail = function(req, res){
 	var id = req.params.id; 
